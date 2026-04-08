@@ -1,0 +1,29 @@
+{
+  "name": "serenity-ai-cli",
+  "version": "0.1.0",
+  "description": "CLI for the Serenity AI platform — manage conversations, agents, teams, workspaces and more from the terminal",
+  "type": "module",
+  "bin": {
+    "serenity-ai-cli": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "bun build src/index.ts --outfile dist/index.js --target bun",
+    "dev": "bun run src/index.ts"
+  },
+  "keywords": ["serenity", "ai", "cli", "agents", "llm", "api"],
+  "author": "Serenity System",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Serenity-System/serenity-ai-cli.git"
+  },
+  "homepage": "https://ai.serenity-system.fr",
+  "dependencies": {
+    "commander": "^13.0.0",
+    "picocolors": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.7.0"
+  }
+}
