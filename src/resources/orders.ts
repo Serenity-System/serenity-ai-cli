@@ -110,6 +110,6 @@ ordersResource
   .requiredOption("--order <id>", "Order ID")
   .option("--json", "JSON output")
   .action(async (opts) => {
-    try { output(await client.post("/api/checkout", { order_id: opts.order }), opts); }
+    try { output(await client.post("/api/v1/checkout", { order_id: opts.order }), opts); }
     catch (err) { handleError(err, opts.json); }
   });

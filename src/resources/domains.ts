@@ -12,7 +12,7 @@ domainsResource
   .option("--page <n>", "Page number", "1")
   .option("--json", "JSON output")
   .action(async (opts) => {
-    try { output(await client.get("/api/domains", { page: opts.page }), opts); }
+    try { output(await client.get("/api/v1/domains", { page: opts.page }), opts); }
     catch (err) { handleError(err, opts.json); }
   });
 
@@ -22,7 +22,7 @@ domainsResource
   .argument("<domain>", "Domain name")
   .option("--json", "JSON output")
   .action(async (domain, opts) => {
-    try { output(await client.get(`/api/domains/${domain}`), opts); }
+    try { output(await client.get(`/api/v1/domains/${domain}`), opts); }
     catch (err) { handleError(err, opts.json); }
   });
 
@@ -32,7 +32,7 @@ domainsResource
   .argument("<domain>", "Domain name")
   .option("--json", "JSON output")
   .action(async (domain, opts) => {
-    try { output(await client.get(`/api/domains/check/${domain}`), opts); }
+    try { output(await client.get(`/api/v1/domains/check/${domain}`), opts); }
     catch (err) { handleError(err, opts.json); }
   });
 
@@ -46,6 +46,6 @@ domainsResource
     try {
       const body: Record<string, unknown> = { domain: opts.domain };
       if (opts.company) body.company_id = opts.company;
-      output(await client.post("/api/domains", body), opts);
+      output(await client.post("/api/v1/domains", body), opts);
     } catch (err) { handleError(err, opts.json); }
   });
