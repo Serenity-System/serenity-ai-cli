@@ -31,3 +31,27 @@ workStatesResource
       output(data, opts);
     } catch (err) { handleError(err, opts.json); }
   });
+
+workStatesResource
+  .command("delete")
+  .description("Delete a work state")
+  .argument("<id>", "Work state ID")
+  .option("--json", "JSON output")
+  .action(async (id, opts) => {
+    try {
+      await client.delete(`/api/work-states/${id}`);
+      output({ deleted: true, id }, opts);
+    } catch (err) { handleError(err, opts.json); }
+  });
+
+workStatesResource
+  .command("complete")
+  .description("Mark a work state as completed")
+  .argument("<id>", "Work state ID")
+  .option("--json", "JSON output")
+  .action(async (id, opts) => {
+    try {
+      const data = await client.patch(`/api/work-states/${id}`, { status: "completed" });
+      output(data, opts);
+    } catch (err) { handleError(err, opts.json); }
+  });
